@@ -5,12 +5,22 @@ import UploadButton from "../components/UploadButton";
 import Slideshow from "../components/Slideshow";
 import Feature from "../components/Feature";
 import PopularMotif from "../components/PopularMotif";
+import { Link } from "react-router-dom";
+import BatikMap from "../components/BatikMap";
 
 export default function Home() {
   const { isAuthenticated } = useContext(AuthContext);
 
   return (
-    <>
+    <main id="main-content" className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      {/* Skip to content link */}
+      <a
+        href="#main-content"
+        className="sr-only focus:not-sr-only focus:absolute focus:top-2 focus:left-2 focus:bg-white focus:px-4 focus:py-2 focus:z-50"
+      >
+        Loncat ke konten utama
+      </a>
+
       {/* Status Autentikasi */}
       {isAuthenticated && (
         <div className="mb-4 p-2 bg-green-100 text-green-800 rounded text-sm">
@@ -19,8 +29,8 @@ export default function Home() {
       )}
 
       {/* Hero Section */}
-      <section className="text-center mb-10">
-        <h1 className="text-2xl sm:text-3xl font-normal mb-6 text-gray-900 md:mt-10">
+      <section className="text-center mb-10 py-8">
+        <h1 className="text-2xl sm:text-3xl font-normal mb-6 text-gray-900">
           Temukan Makna Budaya di Balik Motif Batik
         </h1>
         {isAuthenticated ? (
@@ -28,13 +38,13 @@ export default function Home() {
         ) : (
           <p className="text-sm text-gray-500">
             Silakan{" "}
-            <a href="/login" className="text-blue-600 hover:underline">
+            <Link to="/#/login" className="text-blue-600 hover:underline">
               login
-            </a>{" "}
+            </Link>{" "}
             atau{" "}
-            <a href="/register" className="text-blue-600 hover:underline">
+            <Link to="/#/register" className="text-blue-600 hover:underline">
               daftar
-            </a>{" "}
+            </Link>{" "}
             untuk mengunggah gambar
           </p>
         )}
@@ -51,16 +61,19 @@ export default function Home() {
           icon={faBolt}
           title="Cepat"
           description="Unggah & Identifikasi"
+          ariaLabel="Fitur cepat untuk mengunggah dan mengidentifikasi batik"
         />
         <Feature
           icon={faBook}
           title="Edukatif"
           description="Pelajari Filosofi"
+          ariaLabel="Fitur edukatif untuk mempelajari filosofi batik"
         />
         <Feature
           icon={faCompass}
           title="Interaktif"
           description="Jelajahi Ragam Motif"
+          ariaLabel="Fitur interaktif untuk menjelajahi ragam motif batik"
         />
       </section>
 
@@ -72,11 +85,23 @@ export default function Home() {
         <div className="grid grid-cols-1 gap-2 sm:flex flex-col sm:flex-row sm:space-x-4 space-y-4 sm:space-y-0 overflow-x-visible pb-2">
           {["Parang", "Kawung", "Mega Mendung", "Sido Luhur", "Truntum"].map(
             (motif) => (
-              <PopularMotif key={motif} label={motif} />
+              <PopularMotif
+                key={motif}
+                label={motif}
+                ariaLabel={`Motif batik ${motif}`}
+              />
             )
           )}
         </div>
       </section>
-    </>
+
+      {/* Batik Map Section */}
+      <section className="mb-14">
+        <h2 className="text-xl font-bold mb-6 text-gray-900">
+          Persebaran Batik di Indonesia
+        </h2>
+        <BatikMap />
+      </section>
+    </main>
   );
 }
