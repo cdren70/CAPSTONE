@@ -43,10 +43,11 @@ export default function Navbar() {
               <Link to="/gallery" className="text-gray-700 hover:text-gray-900">
                 Galeri
               </Link>
-              <Link to="#" className="text-gray-700 hover:text-gray-900">
+              <Link to="/about" className="text-gray-700 hover:text-gray-900">
                 Tentang
               </Link>
-              <Link to="#" className="text-gray-700 hover:text-gray-900">
+              {/* Perubahan disini: Link ke halaman Upload */}
+              <Link to="/upload" className="text-gray-700 hover:text-gray-900">
                 Unggah
               </Link>
             </div>
@@ -152,14 +153,15 @@ export default function Navbar() {
                 Galeri
               </Link>
               <Link
-                to="#"
+                to="/about"
                 className="block px-3 py-2 text-gray-700 hover:bg-gray-100 rounded"
                 onClick={() => setIsMenuOpen(false)}
               >
                 Tentang
               </Link>
+              {/* Perubahan disini: Link ke halaman Upload di mobile */}
               <Link
-                to="#"
+                to="/upload"
                 className="block px-3 py-2 text-gray-700 hover:bg-gray-100 rounded"
                 onClick={() => setIsMenuOpen(false)}
               >

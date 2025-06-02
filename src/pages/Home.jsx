@@ -38,11 +38,11 @@ export default function Home() {
         ) : (
           <p className="text-sm text-gray-500">
             Silakan{" "}
-            <Link to="/#/login" className="text-blue-600 hover:underline">
+            <Link to="/Login" className="text-blue-600 hover:underline">
               login
             </Link>{" "}
             atau{" "}
-            <Link to="/#/register" className="text-blue-600 hover:underline">
+            <Link to="/register" className="text-blue-600 hover:underline">
               daftar
             </Link>{" "}
             untuk mengunggah gambar
